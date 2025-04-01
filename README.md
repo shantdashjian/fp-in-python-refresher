@@ -44,3 +44,55 @@ A repo to brush up on FP using Python.
 
 ### 5. Referential Transparency
 - RT is to always be able to replace a function call with its return value(s).
+
+### 6. Recursion
+- It's a way to write functions such that the function calls itself, until a base case is met.
+```
+def factorial(n):
+    if n <= 1:
+        return 1
+    return n * factorial(n - 1)    
+```
+- Recursion is part of FP becasue it's a way to iterate while avoiding stateful loops.
+- `isinstance(thing, type)`
+- To merge two dictionaries, use the newly added merge operator, which is just a pipe, `|`. `merged = dict1 | dict2`.
+- We use recursion with trees becasue they have unknown depth.
+- You can use a loop in a recursion function.
+
+#### Dangers of Recursion
+1. Stack overflow
+2. Infinite loop -> stack overflow
+3. In Python it is slower than a regular loop, as each call requires some memory. Tail call optimization could have helped but Python doesn't have it.
+
+### 7. Functiona Transformation
+- It's a special kingd of HOF.
+- It's a function that takes a function(s) and returns a function.
+```
+def transformer(fun):
+    def inner_fun(x):
+        return fun(x, x)
+    return inner_fun
+```
+
+#### Why
+1. Simplify your code
+2. Reusability
+3. Closure
+
+### 8. Closure
+- A function that closes on the enclosing scope.
+- It remembers the state outside of it.
+- It's a stateful function. That's the whole point.
+- Closures are not pure functions. They change state that's outside of them, and they may have side effects.
+- If the outside state is an immutable variable that you'll need to reassign, we need to use `nolocal`.
+```
+def keep_the_count(current_count):
+    count = current_count
+    def add(new_count):
+        nonlocal count
+        count += new_count
+        return count
+    return add
+```
+- You can only concatenate a tuple to a tuple. `added = old + (item, )`
+
