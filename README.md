@@ -64,7 +64,7 @@ def factorial(n):
 2. Infinite loop -> stack overflow
 3. In Python it is slower than a regular loop, as each call requires some memory. Tail call optimization could have helped but Python doesn't have it.
 
-### 7. Functiona Transformation
+### 7. Function Transformation
 - It's a special kingd of HOF.
 - It's a function that takes a function(s) and returns a function.
 ```
