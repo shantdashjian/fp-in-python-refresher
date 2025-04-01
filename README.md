@@ -5,9 +5,9 @@ A repo to brush up on FP using Python.
 ![fp-languages](demo/fp-languages.png)
 
 ## In This Document:
-  - [What is Functional Programming](what-is-functional-programming)
-  - [Why Functional Programming](why-functional-programming)
-  - [FP Concepts](fp-concepts)
+  - [What is Functional Programming](#what-is-functional-programming)
+  - [Why Functional Programming](#why-functional-programming)
+  - [FP Concepts](#fp-concepts)
 
 ## What is Functional Programming
 - It's a way to program using functions to transform data.
