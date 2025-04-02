@@ -96,3 +96,70 @@ def keep_the_count(current_count):
 ```
 - You can only concatenate a tuple to a tuple. `added = old + (item, )`
 
+### 9. Currying
+- Translate a single function that accepts multiple parameters into multiple functions that each accepts a single parameter.
+- We use it to change a function's signature to make it conform to a specific shape.
+```
+def sum(a):
+    def inner_sum(b):
+        return a + b
+    return inner_sum
+
+print(sum(1)(2))
+```
+
+### 10. Decorators
+- This is syntactci sugar for High Order Functions.
+- It's found in Python, but not in FP langauges like Haskell, OCaml, Scala, Clojure, etc.
+```
+def use_formatter(fun):
+    def wrapper(word):
+        return "* " + fun(word) + " *"
+    return wrapper
+
+@use_formatter
+def add_dashes(word):
+  return "--" + word
+
+print(add_dashes("Hello"))
+```    
+- `*args` in a function signature collects positional args into a tuple. In the function call, it spreads a tuple into positional args.
+- `**kwargs` in a function signature collects keyword/named/key-value pairs args into a dictionary. In the function call, it spreads a dictionary into keyword args.
+```
+def print_arguments(*args, **kwargs):
+    for item in args:
+        print(item)
+    for key in kwargs:
+      print(kwargs[key])
+
+print_arguments("hello", "world", a=1, b=2)
+``` 
+- Syntactic sugar = more convenient syntax
+
+### 11. Sum Types
+- It's a fancy name for `enum`s.
+- A sum type has a fixed number of possible values.
+- A product type has many combinations.
+- In FP we represent erors as values we return, i.e. data, rather than raised exceptions. Raising exceptions are side effects.
+```
+from enum import Enum
+
+Color = Enum("Color", ["RED", "BLUE"]
+
+red = Color.RED
+black = Color.BLACK # raises exception
+```
+- Python doesn't support sum types as well as statically typed languages. They capture errors during compilation.
+- Python has a `match` syntax that takes advantage of `enum`s.
+```
+def get_status(status):
+    match status:
+        case Status.PENDING:
+            return "It's pending."
+        case Status.PROCESSING:
+            return "It's processing."
+        case Status.DONE:
+            return "It's done."
+        case _:
+            raise Exception("Incorrect status")
+```
