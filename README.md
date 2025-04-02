@@ -1,4 +1,4 @@
-# Functional Programming in Python Refresher
+# Functional Programming Refresher
 
 A repo to brush up on FP using Python.
 
